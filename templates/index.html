@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>InfraWatch</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+   
+
+</head>
+
+<body>
+
+<h1>🚀 InfraWatch</h1>
+
+<div class="grid">
+
+<div id="cpu-card" class="card
+{% if data.cpu > 80 %}
+critical
+{% elif data.cpu > 60 %}
+warning
+{% else %}
+normal
+{% endif %}">
+
+<h2>💻 CPU</h2>
+
+<h3 id="cpu-value">{{data.cpu}} %</h3>
+
+<progress id="cpu-bar" value="{{data.cpu}}" max="100"></progress>
+
+<p>Physical Cores : {{data.physical_cores}}</p>
+
+<p>Logical Cores : {{data.logical_cores}}</p>
+
+<p>Frequency : {{data.cpu_freq}} MHz</p>
+
+</div>
+
+<div id="memory-card" class="card
+{% if data.memory > 80 %}
+critical
+{% elif data.memory > 60 %}
+warning
+{% else %}
+normal
+{% endif %}">
+{% if data.memory > 80 %}
+critical
+{% elif data.memory > 60 %}
+warning
+{% else %}
+normal
+{% endif %}">
+
+<h2>🧠 Memory</h2>
+
+<h3 id="memory-value">{{data.memory}} %</h3>
+
+<progress
+    id="memory-bar"
+    value="{{data.memory}}"
+    max="100">
+</progress>
+
+<p>Total : {{data.memory_total}} GB</p>
+
+<p>Available : {{data.memory_available}} GB</p>
+
+<p>Swap : {{data.swap}} %</p>
+
+</div>
+
+<div id="disk-card" class="card
+{% if data.disk > 90 %}
+critical
+{% elif data.disk > 70 %}
+warning
+{% else %}
+normal
+{% endif %}">
+
+<h2>💾 Disk</h2>
+
+<h3 id="disk-value">{{data.disk}} %</h3>
+
+<progress id="disk-bar"
+          value="{{data.disk}}"
+          max="100">
+</progress>
+
+<p>Total : {{data.disk_total}} GB</p>
+
+<p>Free : {{data.disk_free}} GB</p>
+
+</div>
+
+<div class="card">
+
+<h2>🌐 Network</h2>
+
+<p>Hostname : {{data.hostname}}</p>
+
+<p>IP : {{data.ip}}</p>
+
+<p>Sent : {{data.bytes_sent}} MB</p>
+
+<p>Received : {{data.bytes_recv}} MB</p>
+
+<p>Packets Sent : {{data.packets_sent}}</p>
+
+<p>Packets Received : {{data.packets_recv}}</p>
+
+</div>
+
+</div>
+<div class="card">
+
+<h2>🖥️ System</h2>
+
+<p><strong>OS:</strong> {{data.os}}</p>
+
+<p><strong>Kernel:</strong> {{data.kernel}}</p>
+
+<p><strong>Architecture:</strong> {{data.architecture}}</p>
+
+<p><strong>Processor:</strong> {{data.processor}}</p>
+
+<p><strong>Boot Time:</strong> {{data.boot}}</p>
+
+</div>
+
+<div class="card">
+
+<h2>🔥 Top CPU Processes</h2>
+
+<table>
+
+<tr>
+
+<th>PID</th>
+
+<th>Name</th>
+
+<th>CPU%</th>
+
+<th>Memory%</th>
+
+<th>Status</th>
+
+</tr>
+
+<tbody id="process-table">
+
+{% for p in data.processes %}
+
+<tr>
+
+<td>{{p.pid}}</td>
+
+<td>{{p.name}}</td>
+
+<td>{{p.cpu_percent}}</td>
+
+<td>{{"%.2f"|format(p.memory_percent)}}</td>
+
+<td>{{p.status}}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
