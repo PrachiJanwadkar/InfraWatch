@@ -1,21 +1,23 @@
-# 🚀 InfraWatch
+# InfraWatch
 
-A real-time system monitoring dashboard built using **Flask**, **psutil**, and **Docker**.
+A real-time system monitoring dashboard built using Flask, psutil, and Docker.
 
-## ✨ Features
+## Overview
 
-- 📊 Live CPU Monitoring
-- 💾 Memory Monitoring
-- 💽 Disk Monitoring
-- 🌐 Network Statistics
-- 🖥️ System Information
-- 🔥 Top CPU Processes
-- ⚡ REST API for Live Updates
-- 🐳 Dockerized Deployment
+InfraWatch is a lightweight web application that monitors system resources in real time. It displays CPU, memory, disk, network, and system information through a clean web dashboard while exposing the data through a REST API.
 
----
+## Features
 
-## 🛠️ Tech Stack
+- Real-time CPU monitoring
+- Memory usage monitoring
+- Disk usage monitoring
+- Network statistics
+- System information
+- Top CPU-consuming processes
+- REST API for live system metrics
+- Dockerized deployment
+
+## Tech Stack
 
 - Python
 - Flask
@@ -27,9 +29,7 @@ A real-time system monitoring dashboard built using **Flask**, **psutil**, and *
 - Git
 - GitHub
 
----
-
-## 📷 Screenshots
+## Screenshots
 
 ### Running on Windows
 
@@ -39,9 +39,7 @@ A real-time system monitoring dashboard built using **Flask**, **psutil**, and *
 
 ![Docker Dashboard](assets/dashboard-docker.png)
 
----
-
-## 📂 Project Structure
+## Project Structure
 
 ```text
 InfraWatch/
@@ -55,9 +53,9 @@ InfraWatch/
 └── templates/
 ```
 
----
+## Getting Started
 
-## 🚀 Run Locally
+### Run Locally
 
 ```bash
 pip install -r requirements.txt
@@ -70,12 +68,17 @@ Open:
 http://127.0.0.1:5000
 ```
 
----
+### Run with Docker
 
-## 🐳 Run with Docker
+Build the Docker image:
 
 ```bash
 docker build -t infrawatch .
+```
+
+Run the container:
+
+```bash
 docker run -p 5000:5000 infrawatch
 ```
 
@@ -85,17 +88,14 @@ Open:
 http://localhost:5000
 ```
 
----
+## Future Improvements
 
-## 📌 Future Improvements
-
-- Historical graphs
-- Email alerts
-- Authentication
+- Historical performance graphs
+- Email alert notifications
+- User authentication
 - Multi-host monitoring
+- Export system metrics
 
----
-
-## 👩‍💻 Author
+## Author
 
 **Prachi Janwadkar**
